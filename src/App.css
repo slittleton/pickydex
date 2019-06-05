@@ -1,0 +1,190 @@
+.App {
+  font-family: Helvetica;
+}
+
+.container {
+  display: flex;
+  border: 1px solid red;
+}
+
+/* =============== HEADER =============== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3rem;
+  background-color:black;
+  margin: 1.5rem 0 1.5rem 0;
+  color: rgb(255, 255, 255);
+  border-top: 1px solid rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(255, 255, 255)
+}
+
+.header-title {
+  margin-left: 1rem;
+  font-size: 2.5rem;
+  font-family: Helvetica
+}
+
+.header-pic{
+  width: 5rem;
+  margin: 0 1.5rem 0 1rem;
+  float: right;
+  border-radius: 100%;
+  border: 2px solid black;
+  background-color: black;
+
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+.nav-link{
+  color: white;
+  padding: 1rem;
+  text-decoration: none;
+}
+.nav-link:hover {
+  color: red;
+}
+
+/* =============== SIDBAR =============== */
+
+.sidebar {
+  width: 25%;
+  border: 1px solid black;
+  height: 100%;
+}
+
+/* =============== TRAINER =============== */
+.trainer {
+  padding: .5rem;
+  background-color: rgb(77, 77, 77);
+  color: white;
+}
+
+/* =============== POKELIST =============== */
+.pokelist{
+  margin-top: .33rem;
+  text-align: left;
+}
+.list-title {
+  font-weight: bold;
+  font-size: 2em;
+  background-color: red;
+  text-align: center;
+}
+
+.pokelist-item {
+  margin: .3rem;
+  color: blue;
+  font-weight: bold;
+  }
+  .pokelist-item:hover{
+    cursor: pointer;
+  }
+
+/* =============== SEARCH BOX =============== */
+.search-box-form {
+display: flex;
+justify-content: center;
+margin: 0 0 .5rem 0;
+}
+
+.search-box-input {
+  width: 50%;
+  font-size: 1.5rem;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+}
+.search-box-button {
+  border: none;
+  background-color: black;
+  color: rgb(255, 255, 255);
+  padding: .5rem;
+  font-size: 1.5rem;
+  margin-left: .5rem;
+}
+.search-box-button:hover {
+  cursor: pointer;
+}
+
+/* =============== SEARCH RESULT =============== */
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  text-decoration: underline;
+  margin: 1rem;
+}
+.title-sprite {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.search-result-info {
+  margin: 1rem;
+}
+.attribute {
+  font-size: 1.3rem;
+}
+.attribute-title {
+  font-weight: bold;
+}
+.sprite {
+  margin-right: 2rem;
+  height: 200px;
+  background-color: rgb(226, 226, 226);
+  margin-top: 1rem;
+  border-radius: 20%;
+  padding: 0;
+}
+.results-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.result-btn {
+  padding: .5rem;
+  background-color: rgb(255, 206, 206);
+  border: 1px solid black;
+  font-weight: bold;
+  border-radius: .5rem;
+  margin: 1rem;
+}
+.add-btn {
+  background-color: rgb(204, 255, 213);
+}
+.fav-btn {
+  padding: .5rem;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid black;
+  font-weight: bold;
+  border-radius: .5rem;
+  margin: 1rem;
+}
+.fav-btn:hover, .result-btn:hover{
+  box-shadow: 2px 2px 2px gray;
+  cursor: pointer;
+}
+.no-data {
+  font-size: 2rem;
+  color: orangered;
+  font-weight: bold;
+  justify-content: center;
+  display: flex;
+  align-content: center;
+}
+.fav-del-wrapper{
+  display: flex;
+  width: 100%;
+  justify-content: space-between
+}
+.fav-btn-wrapper{
+  display: flex;
+  width: 100%;
+  justify-content: space-between
+}
+.del-btn {
+  float: right;
+}

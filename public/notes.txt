@@ -1,0 +1,74 @@
+PokeApi Website
+https://pokeapi.co/docs/v2.html
+
+PokeApi - pokedex promise v2
+https://github.com/PokeAPI/pokedex-promise-v2
+
+Pokemon api addresses
+/* 
+
+// Pokemon General Info-------------------------------------
+`https://pokeapi.co/api/v2/pokemon/${pokemonName}/`
+
+// Pokemon encounter locations------------------------------
+`https://pokeapi.co/api/v2/pokemon/${pokemonId}/encounters`
+
+// Pokemon Image -------------------------------------------
+`https://en.wikipedia.org/w/api.php?
+origin=*&
+format=json&
+action=query&
+prop=images&
+titles=${pokemonName}`
+
+*/
+
+
+// GENERAL NOTES
+- REDUCERS - 
+searchTerm
+addToList
+delFromList
+currentPokemonInfo
+-extra REDUCERS
+favorite pokemon
+
+----- SearchResults Component----
+if 
+searchTerm is in pokemon list then get pokemon info from local storage,
+do not display the "add pokemon to list" button  
+
+else 
+make http request to api
+
+
+
+move api call to SearchBox then componentWillMount can receive info about pokemon from props through redux.
+
+
+in SearchBox
+1) get search name
+2)check if search name already exists in pokemon list 
+    (should probably have a property in each pokemon object that says if its in the list or not,
+    also do this for whether the pokemon is currently chosen as favorite or not)
+  a) if yes then get data from redux and set selected pokemon to that pokemon
+  b) if it doesn't then make api call and get the data
+    - sort the data and combine it into a custom object 
+    - pass that object into redux 
+
+in SearchResult
+set componentWillUpdate to use data from selected pokemon via props from redux storage
+if pokemon is on the list = true then do not show add-pokemon button, Show delete button (probably also a message that tells the user this pokemon is currently in their pokedex)
+if pokemon is on the list = false then show add button - after add is clicked render delete button and favorite buttons
+  - if favorited then show filled in star if not show empty star (update redux store if changed)
+
+
+
+Getting Images from wikipedia api
+
+https://www.mediawiki.org/wiki/API:Allimages
+
+get the image url
+use tool to download image (curl, wget)
+
+https://en.wikipedia.org/wiki/Pikachu#/media/File:Pok%C3%A9mon_Pikachu_art.png
