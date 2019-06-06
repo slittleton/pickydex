@@ -50,11 +50,12 @@ export const delPokemonFromList = (currentPokemonData, pokemonList, searchedForP
 
     let newPokemonList = pokemonList.filter(item => item !== searchedForPokemon);
 
-    let newPokemonDataSet = Object.assign(allPokemonData);
+    let newPokemonDataSet = {...allPokemonData};
     delete newPokemonDataSet[searchedForPokemon];
 
+    // console.log(newPokemonDataSet)
     localStorage.setItem("pokemonList", JSON.stringify(newPokemonList));
-    localStorage.setItem("allPokemonData", JSON.stringify(allPokemonData));
+    localStorage.setItem("allPokemonData", JSON.stringify(newPokemonDataSet));
 
     let data = { newPokemonList, newPokemonDataSet}
     dispatch({ type: DEL_POKEMON_FROM_LIST, payload: data });
