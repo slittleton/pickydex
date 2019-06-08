@@ -83,6 +83,18 @@
   .pokelist-item:hover{
     cursor: pointer;
   }
+/* =============== FAVORITESLIST =============== */
+.favs-pokelist{
+  margin-top: .33rem;
+  text-align: left;
+}
+
+.favs-list-title{
+  font-weight: bold;
+  font-size: 2em;
+  background-color: gold;
+  text-align: center;
+}
 
 /* =============== SEARCH BOX =============== */
 .search-box-form {

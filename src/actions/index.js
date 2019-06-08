@@ -3,7 +3,9 @@ import {
   CURRENT_POKEMON_DATA,
   ADD_POKEMON_TO_LIST,
   SET_POKEMON_LIST_FROM_LOCAL,
-  DEL_POKEMON_FROM_LIST
+  DEL_POKEMON_FROM_LIST,
+  FAVORITES_LIST,
+  SET_FAVORITES_LIST_FROM_LOCAL
 } from "./actionTypes";
 
 export const currentPokeSearch = searchTerm => (dispatch, getState) => {
@@ -13,10 +15,11 @@ export const currentPokeSearch = searchTerm => (dispatch, getState) => {
 export const setCurrentPokemonData = data => (dispatch, getState) => {
   dispatch({ type: CURRENT_POKEMON_DATA, payload: data });
 };
-export const setPokemonList = (pokeList, pokeData) => (dispatch, getState) => {
-  let data = { pokeList, pokeData };
+export const setPokemonList = (pokeList, pokeData, favList) => (dispatch, getState) => {
+  let data = { pokeList, pokeData, favList };
 
   dispatch({ type: SET_POKEMON_LIST_FROM_LOCAL, payload: data });
+
 };
 
 export const addPokemonToList = (
@@ -51,7 +54,6 @@ export const delPokemonFromList = (currentPokemonData, pokemonList, searchedForP
     let newPokemonDataSet = {...allPokemonData};
     delete newPokemonDataSet[searchedForPokemon];
 
-    // console.log(newPokemonDataSet)
     localStorage.setItem("pokemonList", JSON.stringify(newPokemonList));
     localStorage.setItem("allPokemonData", JSON.stringify(newPokemonDataSet));
 
@@ -59,6 +61,22 @@ export const delPokemonFromList = (currentPokemonData, pokemonList, searchedForP
     dispatch({ type: DEL_POKEMON_FROM_LIST, payload: data });
 
 };
-////////////////////////////////////////////////////////////////////////////////////
-///////////////////////######## TODO ############# Add Favorite Action/////////////////////
-////////////////////////////////////////////////////////////////////////////////////
+
+export const favoritePokemon = (
+  searchedForPokemon, favoritesList
+) => (dispatch, getState) => {
+
+  let favsList = favoritesList.map(x => x);
+  favsList.unshift(searchedForPokemon);
+
+  // Update Redux Store and Local Storage List
+  localStorage.setItem("favoritesList", JSON.stringify(favsList));
+
+  dispatch({ type: FAVORITES_LIST, payload: favsList });
+};
+
+export const setFavsList = (favsList)=> (dispatch, getState) => {
+    console.log('from action', favsList);
+
+    dispatch({ type: SET_FAVORITES_LIST_FROM_LOCAL, payload: favsList });
+}

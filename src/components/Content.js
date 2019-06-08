@@ -5,15 +5,18 @@ import {
   delPokemonFromList,
   setCurrentPokemonData,
   setPokemonList,
-  currentPokeSearch
+  currentPokeSearch,
+  favoritePokemon,
+  setFavsList
 } from "../actions";
 import DisplayInfo from "./display/DisplayInfo";
 
 class Content extends Component {
   async componentDidMount() {
-    const { currentPokemonData, searchedForPokemon } = this.props;
+    const { currentPokemonData, searchedForPokemon, favoritesList } = this.props;
     const pokeList = JSON.parse(localStorage.getItem("pokemonList"));
     const pokeData = JSON.parse(localStorage.getItem("allPokemonData"));
+    const favList = JSON.parse(localStorage.getItem("favoritesList"))
 
     if (pokeList && pokeList.length > 0) {
       await this.props.setPokemonList(pokeList, pokeData);
@@ -22,6 +25,10 @@ class Content extends Component {
         this.chooseRandomPokemon();
       }
     }
+    if( favList && favList.length > 0){
+      await this.props.setFavsList(favList)
+    }
+
   }
 
   addToList = (
@@ -42,6 +49,22 @@ class Content extends Component {
     this.props.delPokemonFromList(currentPokemonData, pokemonList, searchedForPokemon, allPokemonData);
   };
 
+  favorite = (searchedForPokemon, favoritesList) => {
+    console.log(favoritesList)
+    if(favoritesList.includes(searchedForPokemon)){
+
+      ///////// TODO DELETE FROM FAVORITES 
+      ///////// RETURN BUTTON TO NORMAL IF IT SAYS UNFAVORITE
+    } else {
+
+      this.props.favoritePokemon(searchedForPokemon, favoritesList)
+      /////////// TODO SHOW FAVORITE BUTTON AS YELLOW WITH STAR 
+      ////////// CHANGE BUTTON TEXT TO "UNFAVORITE"
+    }
+
+
+  }
+
   chooseRandomPokemon = () => {
     const { pokemonList, allPokemonData } = this.props;
     const random = pokemonList[Math.floor(Math.random() * pokemonList.length)];
@@ -56,7 +79,8 @@ class Content extends Component {
     searchedForPokemon,
     currentPokemonData,
     pokemonList,
-    allPokemonData
+    allPokemonData,
+    favoritesList
   ) => {
     if (currentPokemonData && !pokemonList.includes(searchedForPokemon)) {
       return (
@@ -83,7 +107,7 @@ class Content extends Component {
     if (currentPokemonData && pokemonList.includes(searchedForPokemon)) {
       return (
         <div className="fav-btn-wrapper">
-          <button className="fav-btn">Favorite</button>
+          <button className="fav-btn" onClick={()=> this.favorite(searchedForPokemon, favoritesList)}>Favorite</button>
 
           <div className="btn-wrapper del-wrapper">
             <button
@@ -103,7 +127,8 @@ class Content extends Component {
       searchedForPokemon,
       currentPokemonData,
       pokemonList,
-      allPokemonData
+      allPokemonData,
+      favoritesList
     } = this.props;
     return (
       <div>
@@ -121,7 +146,8 @@ class Content extends Component {
             searchedForPokemon,
             currentPokemonData,
             pokemonList,
-            allPokemonData
+            allPokemonData,
+            favoritesList
           )}
         </div>
       </div>
@@ -135,7 +161,8 @@ const mapStateToProps = state => {
     searchedForPokemon: state.pokeReducer.searchedForPokemon,
     currentPokemonData: state.pokeReducer.currentPokemonData,
     pokemonList: state.pokeReducer.pokemonList,
-    allPokemonData: state.pokeReducer.allPokemonData
+    allPokemonData: state.pokeReducer.allPokemonData,
+    favoritesList: state.pokeReducer.favoritesList
   };
 };
 
@@ -146,6 +173,8 @@ export default connect(
     delPokemonFromList,
     setCurrentPokemonData,
     setPokemonList,
-    currentPokeSearch
+    currentPokeSearch,
+    favoritePokemon,
+    setFavsList
   }
 )(Content);
