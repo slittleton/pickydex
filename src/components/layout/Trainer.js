@@ -1,13 +1,11 @@
-import React, { Component } from 'react'
+import React  from 'react'
 
- class Trainer extends Component {
-  render() {
+ const Trainer = () => {
     return (
       <div className="trainer">
         <h2>Trainer: UserName</h2>
       </div>
     )
-  }
 }
 
 export default Trainer;

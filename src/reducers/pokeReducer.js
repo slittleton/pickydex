@@ -50,7 +50,6 @@ export default (state=initialState, action) => {
       allPokemonData: action.payload.newPokemonDataSet
     }
     case FAVORITES_LIST: 
-    console.log(action.payload)
     return{
       ...state,
       favoritesList: action.payload

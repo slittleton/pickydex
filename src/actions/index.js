@@ -28,6 +28,7 @@ export const addPokemonToList = (
   searchedForPokemon,
   allPokemonData
 ) => (dispatch, getState) => {
+
   let newList = pokemonList.map(x => x);
   newList.unshift(searchedForPokemon);
 
@@ -76,7 +77,5 @@ export const favoritePokemon = (
 };
 
 export const setFavsList = (favsList)=> (dispatch, getState) => {
-    console.log('from action', favsList);
-
     dispatch({ type: SET_FAVORITES_LIST_FROM_LOCAL, payload: favsList });
 }

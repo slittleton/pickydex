@@ -10,10 +10,11 @@ import {
   setFavsList
 } from "../actions";
 import DisplayInfo from "./display/DisplayInfo";
+import AddAndDelButtons from './layout/AddAndDelButtons';
 
 class Content extends Component {
   async componentDidMount() {
-    const { currentPokemonData, searchedForPokemon, favoritesList } = this.props;
+    const { currentPokemonData, searchedForPokemon } = this.props;
     const pokeList = JSON.parse(localStorage.getItem("pokemonList"));
     const pokeData = JSON.parse(localStorage.getItem("allPokemonData"));
     const favList = JSON.parse(localStorage.getItem("favoritesList"))
@@ -31,40 +32,6 @@ class Content extends Component {
 
   }
 
-  addToList = (
-    currentPokemonData,
-    pokemonList,
-    searchedForPokemon,
-    allPokemonData
-  ) => {
-    this.props.addPokemonToList(
-      currentPokemonData,
-      pokemonList,
-      searchedForPokemon,
-      allPokemonData
-    );
-  };
-
-  delFromList = (currentPokemonData, pokemonList, searchedForPokemon, allPokemonData) => {
-    this.props.delPokemonFromList(currentPokemonData, pokemonList, searchedForPokemon, allPokemonData);
-  };
-
-  favorite = (searchedForPokemon, favoritesList) => {
-    console.log(favoritesList)
-    if(favoritesList.includes(searchedForPokemon)){
-
-      ///////// TODO DELETE FROM FAVORITES 
-      ///////// RETURN BUTTON TO NORMAL IF IT SAYS UNFAVORITE
-    } else {
-
-      this.props.favoritePokemon(searchedForPokemon, favoritesList)
-      /////////// TODO SHOW FAVORITE BUTTON AS YELLOW WITH STAR 
-      ////////// CHANGE BUTTON TEXT TO "UNFAVORITE"
-    }
-
-
-  }
-
   chooseRandomPokemon = () => {
     const { pokemonList, allPokemonData } = this.props;
     const random = pokemonList[Math.floor(Math.random() * pokemonList.length)];
@@ -73,62 +40,12 @@ class Content extends Component {
     this.props.setCurrentPokemonData(selectedPokemon);
     this.props.currentPokeSearch(random);
   };
-  ///////###### TODO ###### ADD FAVORITE BUTTON FUNCTIONALITY
-
-  renderAddDelButtons = (
-    searchedForPokemon,
-    currentPokemonData,
-    pokemonList,
-    allPokemonData,
-    favoritesList
-  ) => {
-    if (currentPokemonData && !pokemonList.includes(searchedForPokemon)) {
-      return (
-        <div className="fav-btn-wrapper">
-          <button className="fav-btn">Favorite</button>
-          <div className="btn-wrapper">
-            <button
-              onClick={() =>
-                this.addToList(
-                  currentPokemonData,
-                  pokemonList,
-                  searchedForPokemon,
-                  allPokemonData
-                )
-              }
-              className="result-btn add-btn"
-            >
-              Add To List
-            </button>
-          </div>
-        </div>
-      );
-    }
-    if (currentPokemonData && pokemonList.includes(searchedForPokemon)) {
-      return (
-        <div className="fav-btn-wrapper">
-          <button className="fav-btn" onClick={()=> this.favorite(searchedForPokemon, favoritesList)}>Favorite</button>
-
-          <div className="btn-wrapper del-wrapper">
-            <button
-              onClick={() => this.delFromList(currentPokemonData, pokemonList, searchedForPokemon, allPokemonData)}
-              className="result-btn del-btn"
-            >
-              Delete From List
-            </button>
-          </div>
-        </div>
-      );
-    }
-  };
+ 
 
   render() {
     const {
       searchedForPokemon,
-      currentPokemonData,
-      pokemonList,
-      allPokemonData,
-      favoritesList
+      currentPokemonData
     } = this.props;
     return (
       <div>
@@ -142,13 +59,7 @@ class Content extends Component {
         </div>
 
         <div className="results-buttons">
-          {this.renderAddDelButtons(
-            searchedForPokemon,
-            currentPokemonData,
-            pokemonList,
-            allPokemonData,
-            favoritesList
-          )}
+          <AddAndDelButtons data={this.props}/>
         </div>
       </div>
     );
