@@ -1,29 +1,32 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import {favoritePokemon} from '../../actions';
+import {favoritePokemon, unfavoritePokemon} from '../../actions';
 
 const favorite = (searchedForPokemon, favoritesList, favoritePokemon) => {
-  // console.log('favorite-------', favoritePokemon)
-  if(favoritesList.includes(searchedForPokemon)){
-
-    ///////// TODO DELETE FROM FAVORITES 
-    ///////// RETURN BUTTON TO NORMAL IF IT SAYS UNFAVORITE
-  } else {
-
     favoritePokemon(searchedForPokemon, favoritesList)
-    /////////// TODO SHOW FAVORITE BUTTON AS YELLOW WITH STAR 
-    ////////// CHANGE BUTTON TEXT TO "UNFAVORITE"
-  }
-
+}
+const unfavorite = (searchedForPokemon, favoritesList, unfavoritePokemon)=>{
+  unfavoritePokemon(searchedForPokemon, favoritesList)
 }
 
 const FavoriteButton = (props) => {
-  const { searchedForPokemon, favoritesList,favoritePokemon } = props;
-    // console.log('fav', props)
-  return (
-    <div className="fav-btn-wrapper">
-      <button className="fav-btn" onClick={()=> favorite(searchedForPokemon, favoritesList, favoritePokemon)}>Favorite</button>
-    </div>
-  )
+  const { searchedForPokemon, favoritesList,favoritePokemon, unfavoritePokemon } = props;
+
+  if(!favoritesList.includes(searchedForPokemon)){
+    return (
+      <div className="fav-btn-wrapper">
+        <button className="fav-btn" onClick={()=> favorite(searchedForPokemon, favoritesList, favoritePokemon)}>Favorite</button>
+      </div>
+    )
+  }
+
+  if(favoritesList.includes(searchedForPokemon)){
+    return (
+      <div className="fav-btn-wrapper">
+        <button className="unfav-btn" onClick={()=> unfavorite(searchedForPokemon, favoritesList, unfavoritePokemon)}>Unfavorite</button>
+      </div>
+    )
+  }
+
 }
-export default connect(null, {favoritePokemon})(FavoriteButton)
+export default connect(null, {favoritePokemon, unfavoritePokemon})(FavoriteButton)

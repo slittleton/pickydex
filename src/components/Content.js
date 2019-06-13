@@ -51,15 +51,12 @@ class Content extends Component {
       <div>
         <div className="info">
           <div className="pokemon-info">
+            <AddAndDelButtons data={this.props}/>
             <DisplayInfo
               currentPokemonData={currentPokemonData}
               searchedForPokemon={searchedForPokemon}
             />
           </div>
-        </div>
-
-        <div className="results-buttons">
-          <AddAndDelButtons data={this.props}/>
         </div>
       </div>
     );

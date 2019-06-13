@@ -76,6 +76,12 @@ export const favoritePokemon = (
   dispatch({ type: FAVORITES_LIST, payload: favsList });
 };
 
+export const unfavoritePokemon = (searchedForPokemon, favoritesList) => (dispatch, getState) => {
+  let newfavslist = favoritesList.filter(item => item !== searchedForPokemon)
+
+  dispatch({ type: FAVORITES_LIST, payload: newfavslist})
+}
+
 export const setFavsList = (favsList)=> (dispatch, getState) => {
     dispatch({ type: SET_FAVORITES_LIST_FROM_LOCAL, payload: favsList });
 }

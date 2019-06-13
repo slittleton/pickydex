@@ -1,10 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import {
-  addPokemonToList,
-  delPokemonFromList
-} from "../../actions";
-import FavoriteButton from './FavoriteButton';
+import { addPokemonToList, delPokemonFromList } from "../../actions";
+import FavoriteButton from "./FavoriteButton";
 
 const addToList = (
   currentPokemonData,
@@ -50,9 +47,6 @@ const AddAndDelButtons = props => {
   if (currentPokemonData && !pokemonList.includes(searchedForPokemon)) {
     return (
       <div>
-        <div className="fav-btn-wrapper">
-          <button className="fav-btn">Favorite</button>
-        </div>
         <div className="btn-wrapper">
           <button
             onClick={() =>
@@ -73,24 +67,27 @@ const AddAndDelButtons = props => {
     );
   } else if (currentPokemonData && pokemonList.includes(searchedForPokemon)) {
     return (
-      <div>
-        <FavoriteButton searchedForPokemon={searchedForPokemon} favoritesList={favoritesList}/>
-        <div className="btn-wrapper del-wrapper">
-          <button
-            onClick={() =>
-              delFromList(
-                currentPokemonData,
-                pokemonList,
-                searchedForPokemon,
-                allPokemonData,
-                delPokemonFromList
-              )
-            }
-            className="result-btn del-btn"
-          >
-            Delete From List
-          </button>
+      <div className="btn-wrapper del-wrapper">
+        <div>
+          <FavoriteButton
+            searchedForPokemon={searchedForPokemon}
+            favoritesList={favoritesList}
+          />
         </div>
+        <button
+          onClick={() =>
+            delFromList(
+              currentPokemonData,
+              pokemonList,
+              searchedForPokemon,
+              allPokemonData,
+              delPokemonFromList
+            )
+          }
+          className="result-btn del-btn"
+        >
+          Delete From List
+        </button>
       </div>
     );
   } else {

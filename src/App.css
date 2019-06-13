@@ -123,6 +123,14 @@ margin: 0 0 .5rem 0;
 }
 
 /* =============== SEARCH RESULT =============== */
+.btn-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.btn-spacer {
+  display: flex;
+  justify-content: space-between;
+}
 .title {
   font-size: 3rem;
   font-weight: bold;
@@ -170,6 +178,14 @@ margin: 0 0 .5rem 0;
 .fav-btn {
   padding: .5rem;
   background-color: rgb(255, 255, 255);
+  border: 1px solid black;
+  font-weight: bold;
+  border-radius: .5rem;
+  margin: 1rem;
+}
+.unfav-btn {
+  padding: .5rem;
+  background-color: gold;
   border: 1px solid black;
   font-weight: bold;
   border-radius: .5rem;
