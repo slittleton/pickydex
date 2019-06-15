@@ -5,9 +5,21 @@ import {
   SET_POKEMON_LIST_FROM_LOCAL,
   DEL_POKEMON_FROM_LIST,
   FAVORITES_LIST,
-  SET_FAVORITES_LIST_FROM_LOCAL
+  SET_FAVORITES_LIST_FROM_LOCAL,
+  SET_TRAINERS_LIST
 } from "./actionTypes";
 
+//================= LOGIN ACTIONS =================
+export const setTrainersList = (trainers) => (dispatch, getState) => {
+  let trainersList = trainers.map(trainer=>trainer);
+
+
+  dispatch( { type: SET_TRAINERS_LIST, payload: trainersList})
+}
+
+
+
+//================= POKEMON ACTIONS =================
 export const currentPokeSearch = searchTerm => (dispatch, getState) => {
   dispatch({ type: CURRENT_SEARCHED_POKEMON, payload: searchTerm });
 };
