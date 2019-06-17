@@ -121,7 +121,69 @@ margin: 0 0 .5rem 0;
 .search-box-button:hover {
   cursor: pointer;
 }
-
+/* =============== LANDING =============== */
+.landing{
+  background-color: red;
+  padding: 2rem;
+  /* border: 4px solid Black; */
+  border-radius: 2rem;
+  margin: .5rem;
+}
+.trainer-title{
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  /* border: 3px solid black; */
+  margin: 1rem;
+  border-radius: 1rem;
+  background-color: rgb(154, 255, 255)
+}
+.trainer-list-wrapper{
+  background-color: rgb(154, 255, 255);
+  padding: .5rem;
+  width: 35%;
+  border-radius: 1rem;
+  /* border: 3px solid black; */
+}
+.trainer-list-box {
+  justify-content: center;
+  display: flex;
+}
+.trainer-item {
+  margin: 1rem;
+  font-size: 1.5rem; 
+  display:flex;
+  justify-content: center;
+  /* border: 1px solid black; */
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.6)
+}
+.trainer-item:hover{
+  cursor: pointer;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255)
+}
+.centering-box {
+  display: flex;
+  justify-content: center;
+}
+.trainer-google{
+  display: flex;
+  justify-content: center;
+  margin: .5rem;
+  width: 35%;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 1rem;
+  color: rgb(0, 0, 0)
+}
+.trainer-google:hover {
+  cursor: pointer;
+  border-radius: 1rem;
+  background-color: yellow;
+  color: black
+  
+}
 /* =============== SEARCH RESULT =============== */
 .btn-wrapper {
   display: flex;
