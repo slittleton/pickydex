@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { setTrainersList } from "../actions";
+import { setTrainersList, setCurrentTrainer } from "../actions";
 
 class Landing extends Component {
   async componentDidMount() {
@@ -13,7 +13,16 @@ class Landing extends Component {
     }
   }
 
-  loginTrainer(trainer) {}
+  loginTrainer(trainer) {
+    this.props.setCurrentTrainer(trainer)
+
+    this.props.history.push('/home')
+  }
+  addNewTrainer(){
+    ////////////////////////////////////////////////////////////
+    //////////////////// TODO ADD NEW TRAINER ////////////////////
+
+  }
 
   trainersList(trainersList) {
     if (trainersList) {
@@ -43,6 +52,7 @@ class Landing extends Component {
         <div className="centering-box">
           <div className="trainer-google"> Login With Google </div>
         </div>
+        <div className="trainer-google" onClick={this.addNewTrainer}>Add New Trainer +</div>
       </div>
     );
   }
@@ -57,7 +67,7 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { setTrainersList }
+  { setTrainersList, setCurrentTrainer }
 )(Landing);
 
 /*

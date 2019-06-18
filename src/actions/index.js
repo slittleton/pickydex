@@ -6,7 +6,8 @@ import {
   DEL_POKEMON_FROM_LIST,
   FAVORITES_LIST,
   SET_FAVORITES_LIST_FROM_LOCAL,
-  SET_TRAINERS_LIST
+  SET_TRAINERS_LIST,
+  SET_CURRENT_TRAINER
 } from "./actionTypes";
 
 //================= LOGIN ACTIONS =================
@@ -14,9 +15,12 @@ export const setTrainersList = (trainers) => (dispatch, getState) => {
   let trainersList = trainers.map(trainer=>trainer);
 
 
-  dispatch( { type: SET_TRAINERS_LIST, payload: trainersList})
+  dispatch({ type: SET_TRAINERS_LIST, payload: trainersList })
 }
-
+export const setCurrentTrainer = trainer => (dispatch, getState) => {
+  
+  dispatch({ type: SET_CURRENT_TRAINER, payload: trainer })
+}
 
 
 //================= POKEMON ACTIONS =================

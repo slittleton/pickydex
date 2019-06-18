@@ -1,11 +1,21 @@
-import React  from 'react'
+import React  from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
- const Trainer = () => {
+const navToLanding = (props) => props.history.push('/')
+
+ const Trainer = (props) => {
     return (
       <div className="trainer">
-        <h2>Trainer: UserName</h2>
+        <h2>Trainer: {props.currentTrainer}</h2>
+        <Link to="/" className="landing-link">Choose another trainer</Link>
       </div>
     )
 }
 
-export default Trainer;
+const mapStateToProps = (state) =>{
+  return {
+    currentTrainer: state.trainerReducer.currentTrainer
+  }
+}
+export default connect(mapStateToProps)(Trainer);
