@@ -12,8 +12,9 @@ import {
 //================= LOGIN ACTIONS =================
 
 export const setCurrentTrainer = trainer => (dispatch, getState) => {
-  localStorage.setItem("currentTrainer", trainer);
-  dispatch({ type: SET_CURRENT_TRAINER, payload: trainer })
+  localStorage.setItem("currentTrainer", JSON.stringify([trainer]));
+
+  dispatch({ type: SET_CURRENT_TRAINER, payload: [trainer] })
 }
 
 

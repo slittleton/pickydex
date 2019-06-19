@@ -12,6 +12,7 @@ import {
 } from "../actions";
 import DisplayInfo from "./display/DisplayInfo";
 import AddAndDelButtons from './layout/AddAndDelButtons';
+import { withRouter } from "react-router-dom";
 
 class Content extends Component {
   async componentDidMount() {
@@ -19,7 +20,7 @@ class Content extends Component {
     const pokeList = JSON.parse(localStorage.getItem("pokemonList"));
     const pokeData = JSON.parse(localStorage.getItem("allPokemonData"));
     const favList = JSON.parse(localStorage.getItem("favoritesList"));
-    const trainer = localStorage.getItem("currentTrainer");
+    const trainer = JSON.parse(localStorage.getItem("currentTrainer"));
     
 
 
@@ -34,9 +35,13 @@ class Content extends Component {
       await this.props.setFavsList(favList)
     }
 
-    if(trainer){
-      this.props.setCurrentTrainer(trainer);
+    if(trainer !== null){
+      this.props.setCurrentTrainer(trainer[0]);
     }
+    if(trainer === null){
+      this.props.history.push("/trainer")
+    }
+
   }
 
   chooseRandomPokemon = () => {
@@ -47,7 +52,7 @@ class Content extends Component {
     this.props.setCurrentPokemonData(selectedPokemon);
     this.props.currentPokeSearch(random);
   };
- 
+
 
   render() {
     const {
@@ -81,7 +86,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   {
     addPokemonToList,
@@ -93,4 +98,4 @@ export default connect(
     setFavsList,
     setCurrentTrainer
   }
-)(Content);
+)(Content));

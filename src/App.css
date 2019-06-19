@@ -147,7 +147,15 @@ margin: 0 0 .5rem 0;
   border-radius: 2rem;
   margin: .5rem;
 }
-
+.message {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 1rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  background-color: rgb(154, 255, 255)
+}
 .trainer-title{
   display: flex;
   justify-content: center;

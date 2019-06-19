@@ -1,7 +1,7 @@
 import { SET_CURRENT_TRAINER } from "../actions/actionTypes";
 
 const initialState = {
-  currentTrainer: '',
+  currentTrainer: [],
 
 }
 export default (state=initialState, action)=> {
