@@ -112,7 +112,7 @@ class SearchBox extends Component {
             placeholder="Enter Pokemon Name"
             name="searchTerm"
             onChange={this.onChange}
-            value={this.state.value}
+            value={this.state.searchTerm}
           />
           <button className="search-box-button">Search</button>
         </form>

@@ -61,8 +61,27 @@
   padding: .5rem;
   background-color: rgb(77, 77, 77);
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
+.trainer-name {
+  padding-left: .3rem;
+}
+.trainer-btn {
+  padding: .5rem;
+  background-color: rgb(0, 247, 255);
+  border: 1px solid black;
+  font-weight: bold;
+  border-radius: .5rem;
+  margin: 1rem;
+}
+.trainer-btn:hover{
+  cursor: pointer;
+}
+.settings-pic{
+  width: 20px;
+}
 /* =============== POKELIST =============== */
 .pokelist{
   margin-top: .33rem;
@@ -128,6 +147,7 @@ margin: 0 0 .5rem 0;
   border-radius: 2rem;
   margin: .5rem;
 }
+
 .trainer-title{
   display: flex;
   justify-content: center;
@@ -136,6 +156,20 @@ margin: 0 0 .5rem 0;
   margin: 1rem;
   border-radius: 1rem;
   background-color: rgb(154, 255, 255)
+}
+.trainer-input{
+  font-size: 1.5rem; 
+  display:flex;
+  justify-content: center;
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255);
+  padding: 0 1rem 0 1rem;
+  text-align: center;
+  border: none;
+  color: black;
+}
+.trainer-input::placeholder{
+  color: black;
 }
 .trainer-list-wrapper{
   background-color: rgb(154, 255, 255);
@@ -153,13 +187,9 @@ margin: 0 0 .5rem 0;
   display:flex;
   justify-content: center;
   border-radius: 1rem;
-  background-color: rgba(255, 255, 255, 0.6)
-}
-.trainer-item:hover{
-  cursor: pointer;
-  background-color: rgb(0, 0, 0);
-  color: rgb(255, 255, 255)
-}
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0)}
+
 .centering-box {
   display: flex;
   justify-content: center;

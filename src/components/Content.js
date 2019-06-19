@@ -7,7 +7,8 @@ import {
   setPokemonList,
   currentPokeSearch,
   favoritePokemon,
-  setFavsList
+  setFavsList,
+  setCurrentTrainer
 } from "../actions";
 import DisplayInfo from "./display/DisplayInfo";
 import AddAndDelButtons from './layout/AddAndDelButtons';
@@ -17,7 +18,10 @@ class Content extends Component {
     const { currentPokemonData, searchedForPokemon } = this.props;
     const pokeList = JSON.parse(localStorage.getItem("pokemonList"));
     const pokeData = JSON.parse(localStorage.getItem("allPokemonData"));
-    const favList = JSON.parse(localStorage.getItem("favoritesList"))
+    const favList = JSON.parse(localStorage.getItem("favoritesList"));
+    const trainer = localStorage.getItem("currentTrainer");
+    
+
 
     if (pokeList && pokeList.length > 0) {
       await this.props.setPokemonList(pokeList, pokeData);
@@ -30,6 +34,9 @@ class Content extends Component {
       await this.props.setFavsList(favList)
     }
 
+    if(trainer){
+      this.props.setCurrentTrainer(trainer);
+    }
   }
 
   chooseRandomPokemon = () => {
@@ -83,6 +90,7 @@ export default connect(
     setPokemonList,
     currentPokeSearch,
     favoritePokemon,
-    setFavsList
+    setFavsList,
+    setCurrentTrainer
   }
 )(Content);

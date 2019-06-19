@@ -25,8 +25,8 @@ const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
-        <Route exact path="/" component={Landing} />
-        <Route exact path="/home" component={Home} />
+        <Route exact path="/trainer" component={Landing} />
+        <Route exact path="/" component={Home} />
       </BrowserRouter>
     </div>
   );
